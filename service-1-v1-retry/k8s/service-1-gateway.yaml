@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: service-1-gateway-retry
+  namespace: sumanns
+spec:
+  selector:
+    istio: ingressgateway  # Default Istio Ingress Gateway
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-1-v1-retry
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: service-1-retry
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: service-1-retry
+        version: v1
+    spec:
+      containers:
+        - name: service-1-retry
+          image: gcr.io/istio-demo-project-440716/service-1-v1-retry:latest
+          ports:
+            - containerPort: 8080

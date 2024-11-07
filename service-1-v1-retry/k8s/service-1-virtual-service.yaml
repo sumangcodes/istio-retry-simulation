@@ -1,0 +1,24 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: service-1-virtualservice-retry
+  namespace: sumanns
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - service-1-gateway-retry
+  http:
+  - match:
+    - uri:
+        exact: /hello
+    retries:
+      attempts: 3              # Number of retry attempts
+      perTryTimeout: 7s         # Timeout per retry attempt
+    route:
+    - destination:
+        host: service-1-retry.sumanns.svc.cluster.local
+        subset: v1
+        port:
+          number: 80
+      weight: 100
