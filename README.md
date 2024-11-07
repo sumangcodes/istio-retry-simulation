@@ -1,7 +1,4 @@
 # istio-retry-simulation
-Here’s a sample `README.md` file for a GitHub repository containing the Istio `VirtualService` configuration with retry logic.
-
----
 
 # Istio VirtualService with Retry Configuration
 
